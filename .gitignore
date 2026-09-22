@@ -18,3 +18,5 @@ vendor/
 # Your voice reference — personal biometric data, never commit
 roteiros/voz_ref.*
 roteiros/audio.*
+roteiros/agenda.json
+roteiros/estilos_usados.json

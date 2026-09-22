@@ -102,6 +102,9 @@ def main():
     p.add_argument("--out", default="work/tts_voz")
     p.add_argument("--exaggeration", type=float, default=0.5, help="0.3 sobrio, 0.7 dramatico")
     p.add_argument("--cfg", type=float, default=0.5, help="menor = fala mais rapida e solta")
+    p.add_argument("--episodio", help="usa a curva de energia deste episodio: cada fala "
+                                      "recebe um exagero diferente, em vez de ler tudo no "
+                                      "mesmo tom do comeco ao fim")
     a = p.parse_args()
 
     if not os.path.isfile(a.ref):
@@ -126,13 +129,22 @@ def main():
     if not a.roteiro:
         sys.exit("--roteiro obrigatorio no modo roteiro")
     linhas = linhas_do_roteiro(a.roteiro)
+    curva = None
+    if a.episodio:
+        sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+        from variacao import estilo, energia_da_fala
+        est = estilo(a.episodio)
+        curva = [energia_da_fala(est, i, len(linhas)) for i in range(len(linhas))]
+        faixa = f"{min(c[0] for c in curva):.2f}-{max(c[0] for c in curva):.2f}"
+        print(f"curva de energia de '{a.episodio}': exagero {faixa}, cfg {curva[0][1]}")
     print(f"{len(linhas)} falas -> {a.out}")
     t0, total = time.time(), 0.0
     for m in linhas:
         alvo = os.path.join(a.out, f"{m['i']:03d}.wav")
-        _, dur = falar(m["texto"], alvo, a.ref, a.exaggeration, a.cfg)
+        exa, cfg = curva[m["i"]] if curva else (a.exaggeration, a.cfg)
+        _, dur = falar(m["texto"], alvo, a.ref, exa, cfg)
         total += dur
-        print(f"  {m['i']+1}/{len(linhas)}  {dur:5.1f}s  {m['ato'][:28]}", flush=True)
+        print(f"  {m['i']+1}/{len(linhas)}  {dur:5.1f}s  exa {exa:.2f}  {m['ato'][:24]}", flush=True)
     import json
     json.dump(linhas, open(os.path.join(a.out, "meta.json"), "w"), ensure_ascii=False, indent=1)
     gasto = time.time() - t0
