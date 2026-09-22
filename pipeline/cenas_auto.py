@@ -41,8 +41,8 @@ MAPA = [
     (r"veneno|gota|picad|mordid", "gota"),
     (r"por cento|letalidade|cada dez|nove em cada|numero|mil|registr", "numeros"),
     (r"mil novecentos|anos sessenta|ano|1965|1981|epoca|decada", "calendario"),
-    (r"nao |nunca|jamais|esquece|torniquete|cortar|chupar", "errado"),
-    (r"lava|calmo|erguer|leva|fazer", "certo"),
+    (r"\bnao (amarr|corta|fura|queim|espreme|chupa|poe|bebe|enfia|deixa)|nunca (faca|poe|use)|torniquete|garrote|esquece isso", "errado"),
+    (r"\blava |mantem|erguer?|leva a|levar|procura|bota calcado|o que fazer", "certo"),
     (r"bota|calcado|sapato|tenis|pisa", "bota"),
     (r"mao|enfia|buraco|lenha|pedra", "mao"),
     (r"pesquisador|medico|cientista|ferreira|homem|cara|gente|pessoa", "gente"),
@@ -128,7 +128,17 @@ def _numero(txt):
 
 
 # ------------------------------------------------------------------ objetos
+# quanto multiplicar `tam` para cada objeto ocupar area parecida na tela
+ESCALA = {
+    "cobra": 1.00, "cascavel": 1.00, "folha": 1.05, "rato": 0.95,
+    "comprimido": 1.15, "estrada": 1.45, "coracao": 1.75, "frasco": 1.55,
+    "gota": 1.70, "calendario": 1.30, "errado": 0.85, "certo": 0.85,
+    "bota": 1.45, "mao": 1.70, "gente": 1.25, "lupa": 1.40, "arvore": 1.20,
+}
+
+
 def _obj(nome, p, cx, cy, tam, s, ac):
+    tam = tam * ESCALA.get(nome, 1.0)
     if nome == "cobra":
         OC.cobra(p, cx, cy, tam, s, ondas=2.0)
     elif nome == "cascavel":
