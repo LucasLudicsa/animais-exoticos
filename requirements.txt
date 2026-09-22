@@ -1,0 +1,11 @@
+# Rendering + audio
+Pillow>=9.0
+numpy==2.2.6
+imageio-ffmpeg==0.6.0     # ships a static ffmpeg binary; no system install needed
+
+# Voice-over (current: Microsoft Edge neural voices, free, no API key)
+edge-tts==7.2.8
+
+# Only needed to analyse reference videos (transcription) — not for producing episodes
+av==17.1.0
+faster-whisper==1.2.1

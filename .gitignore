@@ -1,0 +1,13 @@
+# Regenerable build artifacts — frames alone were 3.5 GB
+work/
+__pycache__/
+*.pyc
+venv/
+.venv/
+
+# Finished renders: too big for git, and rebuildable from the pipeline
+out/
+*.mp4
+
+# Keep posters out too
+out/*.jpg

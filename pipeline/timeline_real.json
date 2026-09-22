@@ -1,0 +1,269 @@
+{
+ "total": 74.977,
+ "linhas": [
+  {
+   "i": 0,
+   "ato": "1 GANCHO",
+   "texto": "Armadeira. Foneutria nigriventer.",
+   "legenda": "Armadeira.\nPhoneutria nigriventer.",
+   "rate": "-34%",
+   "pausa": 0.8,
+   "in": 0.0,
+   "dur": 4.571,
+   "out": 4.571
+  },
+  {
+   "i": 1,
+   "ato": "2 ORIGEM",
+   "texto": "A aranha mais venenosa do mundo não mora na Austrália.",
+   "legenda": "A aranha mais venenosa do mundo não mora na Austrália.",
+   "rate": "+7%",
+   "pausa": 0.34,
+   "in": 5.451,
+   "dur": 2.821,
+   "out": 8.272
+  },
+  {
+   "i": 2,
+   "ato": "2 ORIGEM",
+   "texto": "Mora aqui. Ela não tece teia, não espera.",
+   "legenda": "Mora aqui. Ela não tece teia, não espera.",
+   "rate": "+7%",
+   "pausa": 0.34,
+   "in": 8.612,
+   "dur": 3.397,
+   "out": 12.009
+  },
+  {
+   "i": 3,
+   "ato": "2 ORIGEM",
+   "texto": "Ela caça a pé, no escuro, no chão da Mata Atlântica.",
+   "legenda": "Ela caça a pé, no escuro, no chão da Mata Atlântica.",
+   "rate": "+7%",
+   "pausa": 0.34,
+   "in": 12.349,
+   "dur": 3.02,
+   "out": 15.369
+  },
+  {
+   "i": 4,
+   "ato": "3 ESCALA",
+   "texto": "O veneno é uma neurotoxina que trava os nervos.",
+   "legenda": "O veneno é uma neurotoxina que trava os nervos.",
+   "rate": "+7%",
+   "pausa": 0.36,
+   "in": 15.789,
+   "dur": 2.395,
+   "out": 18.184
+  },
+  {
+   "i": 5,
+   "ato": "3 ESCALA",
+   "texto": "Seis microgramas bastam para matar um camundongo.",
+   "legenda": "Seis microgramas bastam para matar um camundongo.",
+   "rate": "+7%",
+   "pausa": 0.36,
+   "in": 18.544,
+   "dur": 2.632,
+   "out": 21.176
+  },
+  {
+   "i": 6,
+   "ato": "4 CONCRETO",
+   "texto": "Um grão de sal pesa sessenta microgramas.",
+   "legenda": "Um grão de sal pesa sessenta microgramas.",
+   "rate": "-5%",
+   "pausa": 0.46,
+   "in": 21.616,
+   "dur": 2.564,
+   "out": 24.18
+  },
+  {
+   "i": 7,
+   "ato": "4 CONCRETO",
+   "texto": "A dose cabe num décimo de um grão de sal.",
+   "legenda": "A dose cabe num décimo de um grão de sal.",
+   "rate": "-5%",
+   "pausa": 0.46,
+   "in": 24.64,
+   "dur": 2.518,
+   "out": 27.159
+  },
+  {
+   "i": 8,
+   "ato": "5 PAVOR",
+   "texto": "O nome vem do que ela faz quando é encurralada.",
+   "legenda": "O nome vem do que ela faz quando é encurralada.",
+   "rate": "+20%",
+   "pausa": 0.22,
+   "in": 27.699,
+   "dur": 2.177,
+   "out": 29.875
+  },
+  {
+   "i": 9,
+   "ato": "5 PAVOR",
+   "texto": "Ela não foge. Ela se arma.",
+   "legenda": "Ela não foge. Ela se arma.",
+   "rate": "+20%",
+   "pausa": 0.22,
+   "in": 30.095,
+   "dur": 2.24,
+   "out": 32.335
+  },
+  {
+   "i": 10,
+   "ato": "5 PAVOR",
+   "texto": "Levanta as duas primeiras pernas, expõe as presas,",
+   "legenda": "Levanta as duas primeiras pernas, expõe as presas,",
+   "rate": "+20%",
+   "pausa": 0.22,
+   "in": 32.555,
+   "dur": 2.704,
+   "out": 35.259
+  },
+  {
+   "i": 11,
+   "ato": "5 PAVOR",
+   "texto": "e avança na direção da ameaça.",
+   "legenda": "e avança na direção da ameaça.",
+   "rate": "+20%",
+   "pausa": 0.22,
+   "in": 35.479,
+   "dur": 1.66,
+   "out": 37.14
+  },
+  {
+   "i": 12,
+   "ato": "5 PAVOR",
+   "texto": "Nenhuma outra aranha faz isso.",
+   "legenda": "Nenhuma outra aranha faz isso.",
+   "rate": "+20%",
+   "pausa": 0.22,
+   "in": 37.36,
+   "dur": 1.472,
+   "out": 38.832
+  },
+  {
+   "i": 13,
+   "ato": "6 PROVA",
+   "texto": "Por isso o acidente quase sempre acontece dentro de casa.",
+   "legenda": "Por isso o acidente quase sempre acontece dentro de casa.",
+   "rate": "+11%",
+   "pausa": 0.28,
+   "in": 39.132,
+   "dur": 2.813,
+   "out": 41.944
+  },
+  {
+   "i": 14,
+   "ato": "6 PROVA",
+   "texto": "No sapato. Atrás da cortina. No cacho de banana.",
+   "legenda": "No sapato. Atrás da cortina. No cacho de banana.",
+   "rate": "+11%",
+   "pausa": 0.28,
+   "in": 42.224,
+   "dur": 4.383,
+   "out": 46.608
+  },
+  {
+   "i": 15,
+   "ato": "6 PROVA",
+   "texto": "São cerca de quatro mil casos por ano no Brasil.",
+   "legenda": "São cerca de quatro mil casos por ano no Brasil.",
+   "rate": "+11%",
+   "pausa": 0.28,
+   "in": 46.888,
+   "dur": 2.578,
+   "out": 49.466
+  },
+  {
+   "i": 16,
+   "ato": "6 PROVA",
+   "texto": "E como ela viaja escondida em carga de fruta,",
+   "legenda": "E como ela viaja escondida em carga de fruta,",
+   "rate": "+11%",
+   "pausa": 0.28,
+   "in": 49.746,
+   "dur": 2.218,
+   "out": 51.964
+  },
+  {
+   "i": 17,
+   "ato": "6 PROVA",
+   "texto": "já apareceu em portos da Europa.",
+   "legenda": "já apareceu em portos da Europa.",
+   "rate": "+11%",
+   "pausa": 0.28,
+   "in": 52.244,
+   "dur": 1.704,
+   "out": 53.948
+  },
+  {
+   "i": 18,
+   "ato": "7 VIRADA",
+   "texto": "Quase todo caso termina em dor e soro antiaracnídico.",
+   "legenda": "Quase todo caso termina em dor e soro antiaracnídico.",
+   "rate": "+7%",
+   "pausa": 0.36,
+   "in": 54.308,
+   "dur": 2.863,
+   "out": 57.171
+  },
+  {
+   "i": 19,
+   "ato": "7 VIRADA",
+   "texto": "Mas em parte das vítimas apareceu um efeito que ninguém previu.",
+   "legenda": "Mas em parte das vítimas apareceu um efeito que ninguém previu.",
+   "rate": "+7%",
+   "pausa": 0.36,
+   "in": 57.531,
+   "dur": 3.256,
+   "out": 60.787
+  },
+  {
+   "i": 20,
+   "ato": "7 VIRADA",
+   "texto": "O veneno abria os vasos sanguíneos, e o efeito durava horas.",
+   "legenda": "O veneno abria os vasos sanguíneos, e o efeito durava horas.",
+   "rate": "+7%",
+   "pausa": 0.36,
+   "in": 61.147,
+   "dur": 3.213,
+   "out": 64.36
+  },
+  {
+   "i": 21,
+   "ato": "8 TESE",
+   "texto": "Pesquisadores brasileiros isolaram a molécula.",
+   "legenda": "Pesquisadores brasileiros isolaram a molécula.",
+   "rate": "-8%",
+   "pausa": 0.56,
+   "in": 64.8,
+   "dur": 2.758,
+   "out": 67.558
+  },
+  {
+   "i": 22,
+   "ato": "8 TESE",
+   "texto": "Hoje ela está em teste clínico como remédio.",
+   "legenda": "Hoje ela está em teste clínico como remédio.",
+   "rate": "-8%",
+   "pausa": 0.56,
+   "in": 68.118,
+   "dur": 2.553,
+   "out": 70.672
+  },
+  {
+   "i": 23,
+   "ato": "8 TESE",
+   "texto": "A aranha mais venenosa do mundo virou farmácia.",
+   "legenda": "A aranha mais venenosa do mundo virou farmácia.",
+   "rate": "-8%",
+   "pausa": 0.56,
+   "in": 71.232,
+   "dur": 2.896,
+   "out": 74.127
+  }
+ ]
+}

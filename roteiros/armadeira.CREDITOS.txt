@@ -1,0 +1,66 @@
+CRÉDITOS DE IMAGEM — armadeira (PT-BR)
+====================================================================
+
+Todas as fotos vêm do Wikimedia Commons.
+
+ATRIBUIÇÃO OBRIGATÓRIA (CC BY): a foto da aranha e a do Butantan.
+As demais são CC0 ou domínio público e dispensam crédito legal,
+mas creditar é boa prática.
+
+SHORT + LONGO — a aranha real
+  arquivo : Phoneutria nigriventer Brisbane.jpg
+  autor   : Graham Wise from Brisbane, Australia
+  licenca : CC BY 2.0
+  fonte   : https://commons.wikimedia.org/wiki/File:Phoneutria_nigriventer_Brisbane.jpg
+
+SHORT — 'no chão da Mata Atlântica'
+  arquivo : Natural wild mushrooms growing on a forest floor during monsoon.jpg
+  autor   : Satarker samiksha
+  licenca : CC0
+  fonte   : https://commons.wikimedia.org/wiki/File:Natural_wild_mushrooms_growing_on_a_forest_floor_during_monsoon.jpg
+
+SHORT — 'no cacho de banana'
+  arquivo : Banana bunch on tree.jpg
+  autor   : Johnnybam
+  licenca : CC0
+  fonte   : https://commons.wikimedia.org/wiki/File:Banana_bunch_on_tree.jpg
+
+SHORT — 'portos da Europa'
+  arquivo : BG Antwerp, Port of Rotterdam, Holland, 06JAN2009 pic1.JPG
+  autor   : AlfvanBeem
+  licenca : CC0
+  fonte   : https://commons.wikimedia.org/wiki/File:BG_Antwerp,_Port_of_Rotterdam,_Holland,_06JAN2009_pic1.JPG
+
+SHORT + LONGO — Instituto Butantan
+  arquivo : Instituto Butantan (46580032735).jpg
+  autor   : Governo do Estado de São Paulo
+  licenca : CC BY 2.0
+  fonte   : https://commons.wikimedia.org/wiki/File:Instituto_Butantan_(46580032735).jpg
+
+LONGO — bolsa de ovos
+  arquivo : Female nursery web spider guarding nursery web.jpg
+  autor   : Pseudopanax at English Wikipedia
+  licenca : Public domain
+  fonte   : https://commons.wikimedia.org/wiki/File:Female_nursery_web_spider_guarding_nursery_web.jpg
+
+LONGO — aranha-marrom (Loxosceles)
+  arquivo : Anterior view of Loxosceles reclusa (Brown Recluse Spider) (22830337766).jpg
+  autor   : Insects Unlocked
+  licenca : CC0
+  fonte   : https://commons.wikimedia.org/wiki/File:Anterior_view_of_Loxosceles_reclusa_(Brown_Recluse_Spider)_(22830337766).jpg
+
+LONGO — caranguejeira
+  arquivo : (Pet) Brazilian whiteknee tarantula (Theraphosidae, Acanthoscurria geniculata) (23486438278).jpg
+  autor   : Insects Unlocked
+  licenca : CC0
+  fonte   : https://commons.wikimedia.org/wiki/File:(Pet)_Brazilian_whiteknee_tarantula_(Theraphosidae,_Acanthoscurria_geniculata)_(23486438278).jpg
+
+
+Tipografia: Permanent Marker (Apache 2.0), Patrick Hand (OFL).
+Efeitos sonoros: sintetizados para este projeto, sem terceiros.
+Locucao: voz neural sintetizada pt-BR — substituir por locutor antes de publicar.
+
+PENDENCIA: os dados do roteiro longo (numeros de acidentes, sazonalidade,
+classificacao de gravidade, primeiros socorros, historia do Butantan) precisam
+de conferencia em fonte primaria antes de publicar. A parte de primeiros
+socorros deve ser revisada por profissional de saude.
