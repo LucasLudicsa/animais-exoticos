@@ -1,0 +1,23 @@
+{
+  "_sobre": "Ajustes de voz definidos por medicao e confirmados de ouvido em 22/09/2026. Nao mexer sem refazer o sweep (pipeline/energia.py).",
+  "referencia": "work/refs/leve_00.wav",
+  "referencia_origem": {
+    "arquivo": "roteiros/voz_ref.wav",
+    "recorte_s": [0.0, 10.0],
+    "tratamento": "highpass=f=70,loudnorm=I=-20:TP=-3",
+    "motivo": "O Chatterbox so le os primeiros 10s. Tratamento leve venceu o pesado por 0.423 contra 0.376 de semelhanca -- afftdn e dynaudnorm apagavam o timbre."
+  },
+  "geracao": {
+    "exaggeration": 0.65,
+    "cfg_weight": 0.30,
+    "temperature": 0.8,
+    "_motivo": "cfg_weight e o que move a expressividade: 0.30 deu +29% de variacao de tom. exaggeration sozinho so deu +4%, e acima de 0.65 comeca a custar semelhanca sem ganhar animacao."
+  },
+  "timbre": {
+    "semitons": -2.0,
+    "corpo": 2.5,
+    "presenca": 2.5,
+    "compressao": true,
+    "_motivo": "grave2. Desce de 91.7 Hz para 81.7 Hz mantendo a variacao de tom em 4.09 semitons: peso sem perder a animacao."
+  }
+}

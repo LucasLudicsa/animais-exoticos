@@ -27,6 +27,15 @@ if os.path.isdir(VENDOR) and VENDOR not in sys.path:
 
 IDIOMA = "pt"
 SR_PIPELINE = 48000  # igual a mixa16.py / sfx.py
+
+_CFG = os.path.join(os.path.dirname(os.path.abspath(__file__)), "voz_config.json")
+
+
+def config():
+    """Ajustes travados em voz_config.json, medidos e confirmados de ouvido."""
+    import json
+    with open(_CFG, encoding="utf-8") as f:
+        return json.load(f)
 _modelo = None
 
 
@@ -100,8 +109,13 @@ def main():
     p.add_argument("--roteiro", help="arquivo .md (modo roteiro)")
     p.add_argument("--texto", help="texto avulso (modo frase)")
     p.add_argument("--out", default="work/tts_voz")
-    p.add_argument("--exaggeration", type=float, default=0.5, help="0.3 sobrio, 0.7 dramatico")
-    p.add_argument("--cfg", type=float, default=0.5, help="menor = fala mais rapida e solta")
+    _g = config()["geracao"]
+    p.add_argument("--exaggeration", type=float, default=_g["exaggeration"],
+                   help="0.3 sobrio, 0.7 dramatico")
+    p.add_argument("--cfg", type=float, default=_g["cfg_weight"],
+                   help="menor = fala mais solta e expressiva; e o ajuste que mais importa")
+    p.add_argument("--sem-timbre", action="store_true",
+                   help="nao aplica a cadeia de peso (grave/corpo/compressao)")
     p.add_argument("--episodio", help="usa a curva de energia deste episodio: cada fala "
                                       "recebe um exagero diferente, em vez de ler tudo no "
                                       "mesmo tom do comeco ao fim")
@@ -110,11 +124,24 @@ def main():
     if not os.path.isfile(a.ref):
         sys.exit(f"audio de referencia nao encontrado: {a.ref}")
 
+    def acaba(caminho):
+        """Aplica a cadeia de timbre por cima do que o modelo gerou."""
+        if a.sem_timbre:
+            return caminho
+        import timbre
+        tb = {k: v for k, v in config()["timbre"].items() if not k.startswith("_")}
+        tmp = caminho + ".tmp.wav"
+        os.replace(caminho, tmp)
+        timbre.aplica(tmp, caminho, **tb)
+        os.remove(tmp)
+        return caminho
+
     if a.modo == "teste":
         frase = ("Ela nao foge. Quando se sente ameacada, levanta as duas primeiras "
                  "pernas, mostra as presas, e espera voce decidir o que fazer.")
         alvo = os.path.join(a.out, "teste.wav")
         _, dur = falar(frase, alvo, a.ref, a.exaggeration, a.cfg)
+        acaba(alvo)
         print(f"ok {alvo} ({dur:.1f}s)")
         return
 
@@ -123,6 +150,7 @@ def main():
             sys.exit("--texto obrigatorio no modo frase")
         alvo = os.path.join(a.out, "frase.wav")
         _, dur = falar(a.texto, alvo, a.ref, a.exaggeration, a.cfg)
+        acaba(alvo)
         print(f"ok {alvo} ({dur:.1f}s)")
         return
 
@@ -143,6 +171,7 @@ def main():
         alvo = os.path.join(a.out, f"{m['i']:03d}.wav")
         exa, cfg = curva[m["i"]] if curva else (a.exaggeration, a.cfg)
         _, dur = falar(m["texto"], alvo, a.ref, exa, cfg)
+        acaba(alvo)
         total += dur
         print(f"  {m['i']+1}/{len(linhas)}  {dur:5.1f}s  exa {exa:.2f}  {m['ato'][:24]}", flush=True)
     import json
