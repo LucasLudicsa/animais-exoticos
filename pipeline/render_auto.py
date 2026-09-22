@@ -17,10 +17,10 @@ import re
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from PIL import Image
+from PIL import Image, ImageDraw, ImageEnhance
 
 import art2
-from art2 import BRANCO, PRETO, Paint, cola, font, texto
+from art2 import BRANCO, PRETO, Paint, cola, densify, font, texto, wob
 import cenas_auto
 import variacao
 
@@ -51,6 +51,51 @@ def _rgb(h):
 FUNDO = _rgb(PAL["fundo"])
 TRACO = _rgb(PAL["traco"])
 AC = _rgb(PAL["destaque"])
+
+# ---------------------------------------------------------------- fotos
+# render16.py tinha isso e eu deixei de fora quando parametrizei: o episodio
+# saiu 9 minutos de desenho sem uma foto real, o que nao segura ninguem.
+FOTODIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "fotos", EP)
+_fc = {}
+
+
+def _foto(nome):
+    if nome in _fc:
+        return _fc[nome]
+    caminho = os.path.join(FOTODIR, f"{nome}.jpg")
+    if not os.path.isfile(caminho):
+        _fc[nome] = None
+        return None
+    im = Image.open(caminho).convert("RGB")
+    im = ImageEnhance.Color(im).enhance(1.25)
+    im = ImageEnhance.Contrast(im).enhance(1.12)
+    _fc[nome] = im
+    return im
+
+
+def poe_foto(p, nome, t, d, seed, cx=None, cy=None, alvo=None):
+    """Foto com moldura tremida e zoom lento -- nunca parada."""
+    src = _foto(nome)
+    if src is None:
+        return False
+    alvo = alvo or (int(W * 0.56), int(H * 0.58))
+    cx = W * 0.5 if cx is None else cx
+    cy = CY if cy is None else cy
+    z = 1.0 + 0.07 * min(1.0, t / max(d, 0.01))          # zoom continuo
+    k = max(alvo[0] / src.width, alvo[1] / src.height) * 1.10 * z
+    im = src.resize((max(1, int(src.width * k)), max(1, int(src.height * k))), Image.LANCZOS)
+    l = max(0, (im.width - alvo[0]) // 2)
+    tp = max(0, (im.height - alvo[1]) // 2)
+    rec = im.crop((l, tp, l + alvo[0], tp + alvo[1]))
+    x0, y0 = int(cx - alvo[0] / 2), int(cy - alvo[1] / 2)
+    msk = Image.new("L", alvo, 0)
+    pts = [(0, 0), (alvo[0], 0), (alvo[0], alvo[1]), (0, alvo[1])]
+    ImageDraw.Draw(msk).polygon(wob(densify(pts + [pts[0]], 40), 7, seed), fill=255)
+    p.im.paste(rec, (x0, y0), msk)
+    p.forma([(x0, y0), (x0 + alvo[0], y0), (x0 + alvo[0], y0 + alvo[1]), (x0, y0 + alvo[1])],
+            None, PRETO, 14, seed, amp=6.0)
+    return True
+
 
 tl = json.load(open(TL_PATH, encoding="utf-8"))
 LIN = tl["linhas"]
@@ -84,7 +129,8 @@ def quadro(t):
 
     p = Paint(W, H, FUNDO)
     ctx = {"p": p, "t": tl_, "d": d, "s": seed, "ac": AC, "CY": CY, "W": W, "H": H,
-           "foto": lambda nome, **kw: None, "idx": idx}
+           "foto": lambda nome, **kw: poe_foto(p, nome, tl_, d, seed, **kw),
+           "tem_foto": lambda nome: _foto(nome) is not None, "idx": idx}
     cenas_auto.desenha(m["i"], ctx)
 
     # cartela de capitulo por cima, no primeiro segundo
