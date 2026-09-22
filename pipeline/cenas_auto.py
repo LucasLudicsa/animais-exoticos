@@ -133,6 +133,15 @@ def _alvo(txt):
     return None
 
 
+def _assunto(txt):
+    """Compatibilidade: o conceito principal da frase.
+
+    A reescrita trocou isto por _conceitos(), e mixa_auto.py quebrou no meio da
+    producao do short porque ainda chamava o nome antigo."""
+    c = _conceitos(txt)
+    return c[0] if c else "cobra"
+
+
 def _numero(txt):
     t = _sa(txt)
     for f, n in ANOS:

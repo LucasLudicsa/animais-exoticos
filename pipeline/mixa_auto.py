@@ -59,7 +59,9 @@ def monta(episodio, tl_path, dir_tts, saida):
     for m in LIN:
         ini = m["in"]
         txt = m["texto"]
-        assunto = cenas_auto._assunto(txt)
+        conc = cenas_auto._conceitos(txt)
+        assunto = conc[0] if conc else "cobra"
+        rel = cenas_auto._relacao(txt)
         num = cenas_auto._numero(txt)
 
         if m.get("cap_inicio"):
@@ -70,12 +72,15 @@ def monta(episodio, tl_path, dir_tts, saida):
         if num:                       # numero e o que o video quer que voce guarde
             soma(sfx.impacto(), ini, G * 0.90)
             soma(sfx.ding(), ini + 0.45, G * 0.55)
-        elif assunto == "errado":     # proibicao: buzina
+        elif rel == "nega":           # proibicao: buzina, no tempo do X
             soma(sfx.pop(480), ini, G * 0.80)
             soma(sfx.erro(), ini + 0.50, G * 0.85)
-        elif assunto == "certo":
-            soma(sfx.pop(520), ini, G * 0.75)
-            soma(sfx.ding(), ini + 0.40, G * 0.50)
+        elif rel == "alvo":           # a seta saindo
+            soma(sfx.pop(500), ini, G * 0.75)
+            soma(sfx.whoosh() if hasattr(sfx, "whoosh") else sfx.boing(), ini + 0.45, G * 0.55)
+        elif rel == "queda":
+            soma(sfx.pop(470), ini, G * 0.70)
+            soma(sfx.tensao(0.8), ini + 0.35, G * 0.70)
         elif assunto in ("comprimido", "frasco"):
             soma(sfx.brilho(), ini + 0.35, G * 0.70)
             soma(sfx.pop(500), ini, G * 0.70)
