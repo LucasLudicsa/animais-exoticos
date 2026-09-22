@@ -11,3 +11,9 @@ out/
 
 # Keep posters out too
 out/*.jpg
+
+# Local voice model environment (1.7 GB, reinstall from requirements-voz.txt)
+vendor/
+
+# Your voice reference — personal biometric data, never commit
+roteiros/voz_ref.*

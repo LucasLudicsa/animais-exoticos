@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Roda voz.py no ambiente isolado do Chatterbox (numpy<2), separado do renderizador.
+cd "$(dirname "$0")"
+exec python3 pipeline/voz.py "$@"

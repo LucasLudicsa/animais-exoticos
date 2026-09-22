@@ -1,0 +1,12 @@
+# Narration environment — INSTALL SEPARATELY from requirements.txt.
+# Chatterbox pins numpy<2; the renderer uses numpy 2.2. They cannot share a prefix.
+#
+#   pip install --target vendor/voz \
+#     --index-url https://download.pytorch.org/whl/cpu \
+#     --extra-index-url https://pypi.org/simple \
+#     -r requirements-voz.txt
+#
+# The CPU torch index matters: the default PyPI wheel drags in ~3 GB of CUDA
+# that this machine has no GPU to use.
+
+chatterbox-tts==0.1.7   # MIT, commercial use OK, clones a voice from a short sample
