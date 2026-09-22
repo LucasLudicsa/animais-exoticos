@@ -26,6 +26,7 @@ if os.path.isdir(VENDOR) and VENDOR not in sys.path:
     sys.path.insert(0, VENDOR)
 
 IDIOMA = "pt"
+SR_PIPELINE = 48000  # igual a mixa16.py / sfx.py
 _modelo = None
 
 
@@ -47,7 +48,13 @@ def modelo():
 
 
 def falar(texto, saida, ref, exaggeration=0.5, cfg_weight=0.5, temperature=0.8):
-    """Sintetiza um trecho e grava em `saida` (.wav)."""
+    """Sintetiza um trecho e grava em `saida`.
+
+    Grava PCM 16 bits a 48 kHz mono, que e exatamente o que mixa16.py espera.
+    O Chatterbox devolve float32 a 24 kHz; gravar isso direto passa no player
+    mas quebra o mixer, que le com o modulo `wave` e assume int16.
+    """
+    import torch
     import torchaudio
 
     m = modelo()
@@ -59,9 +66,17 @@ def falar(texto, saida, ref, exaggeration=0.5, cfg_weight=0.5, temperature=0.8):
         cfg_weight=cfg_weight,
         temperature=temperature,
     )
+    dur = wav.shape[-1] / m.sr
+    if m.sr != SR_PIPELINE:
+        wav = torchaudio.functional.resample(wav, m.sr, SR_PIPELINE)
+    wav = wav.detach().to(torch.float32).clamp(-1.0, 1.0)
+    if wav.dim() == 1:
+        wav = wav.unsqueeze(0)
+    wav = wav[:1]  # mono
+    pcm = (wav * 32767.0).round().to(torch.int16)
     os.makedirs(os.path.dirname(os.path.abspath(saida)), exist_ok=True)
-    torchaudio.save(saida, wav, m.sr)
-    return saida, wav.shape[-1] / m.sr
+    torchaudio.save(saida, pcm, SR_PIPELINE, encoding="PCM_S", bits_per_sample=16)
+    return saida, dur
 
 
 def linhas_do_roteiro(caminho):
